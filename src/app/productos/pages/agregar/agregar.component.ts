@@ -10,6 +10,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class AgregarComponent  {
 
 
+  texto1: string = 'Un gran texto';
+  color: string = 'red';
+
   miFormulario: FormGroup = this.form.group({
     nombre: ['',Validators.required]
   })
@@ -17,7 +20,17 @@ export class AgregarComponent  {
   constructor(private form: FormBuilder) { }
 
   tieneError(campo: string): boolean{
-    return !(this.miFormulario.get(campo)?.valid || false) && (this.miFormulario.touched);
+    return !(this.miFormulario.get(campo)?.valid || false);
+  }
+
+
+  cambiarNombre(){
+    this.texto1 = 'SDL';
+  }
+
+  cambiarColor(){
+    const color = "#xxxxxx".replace(/x/g, y=>(Math.random()*16|0).toString(16));
+    this.color = color;
   }
 
 }
